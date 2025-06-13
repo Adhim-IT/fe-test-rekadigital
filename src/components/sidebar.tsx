@@ -30,23 +30,24 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* Mobile menu button */}
+      {/* Mobile menu button - adjusted position */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="lg:hidden fixed top-4 left-4 z-50 p-2.5 rounded-lg bg-white shadow-md hover:shadow-lg transition-all duration-200 border border-gray-200"
+        className="lg:hidden fixed top-3 left-3 z-50 p-2 rounded-lg bg-white shadow-md hover:shadow-lg transition-all duration-200 border border-gray-200"
         aria-label="Toggle menu"
       >
-        <div className="w-5 h-5 flex flex-col justify-between">
+        <div className="w-4 h-4 flex flex-col justify-between">
           <span
-            className={`block h-0.5 w-full bg-gray-600 transition-all duration-300 transform origin-center ${isOpen ? "rotate-45 translate-y-2" : ""}`}
+            className={`block h-0.5 w-full bg-gray-600 transition-all duration-300 transform origin-center ${isOpen ? "rotate-45 translate-y-1.5" : ""}`}
           />
           <span className={`block h-0.5 w-full bg-gray-600 transition-all duration-300 ${isOpen ? "opacity-0" : ""}`} />
           <span
-            className={`block h-0.5 w-full bg-gray-600 transition-all duration-300 transform origin-center ${isOpen ? "-rotate-45 -translate-y-2" : ""}`}
+            className={`block h-0.5 w-full bg-gray-600 transition-all duration-300 transform origin-center ${isOpen ? "-rotate-45 -translate-y-1.5" : ""}`}
           />
         </div>
       </button>
 
+      {/* Rest of the sidebar code remains the same */}
       {/* Overlay */}
       {isOpen && (
         <div className="lg:hidden fixed inset-0 bg-black/50 z-40 backdrop-blur-sm" onClick={() => setIsOpen(false)} />

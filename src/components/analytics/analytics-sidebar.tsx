@@ -13,50 +13,61 @@ export default function AnalyticsSidebar() {
 
   return (
     <div className="space-y-4 sm:space-y-6">
-      {/* Customer Analytics Card */}
-      <div className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl p-4 sm:p-6 text-white relative overflow-hidden">
-        {/* Background decorative curves */}
-        <div className="absolute inset-0">
-          <svg className="absolute bottom-0 right-0 w-full h-full" viewBox="0 0 300 300" fill="none">
-            <path
-              d="M150 300C150 250 200 200 250 200C300 200 300 150 300 100"
-              stroke="white"
-              strokeWidth="1.5"
-              fill="none"
-              opacity="0.2"
-            />
-            <path
-              d="M100 300C100 220 150 140 230 140C310 140 350 100 350 20"
-              stroke="white"
-              strokeWidth="1.5"
-              fill="none"
-              opacity="0.15"
-            />
-          </svg>
+      <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg h-80 sm:h-96 bg-gradient-to-br from-[#6366f1] to-[#8b5cf6] rounded-xl sm:rounded-2xl p-6 sm:p-8 text-white relative overflow-hidden mx-auto">
+      {/* Background decorative curves */}
+      <div className="absolute inset-0">
+        <svg className="absolute bottom-0 right-0 w-full h-full" viewBox="0 0 320 384" fill="none" preserveAspectRatio="xMaxYMax slice">
+          <path
+            d="M200 384C200 320 240 280 280 280C320 280 360 240 360 180"
+            stroke="white"
+            strokeWidth="1.5 sm:2"
+            fill="none"
+            opacity="0.3"
+          />
+          <path
+            d="M160 384C160 300 200 220 260 220C320 220 380 160 380 80"
+            stroke="white"
+            strokeWidth="1.5 sm:2"
+            fill="none"
+            opacity="0.2"
+          />
+        </svg>
+      </div>
+
+      <div className="relative z-10 h-full flex flex-col">
+        {/* Main heading */}
+        <div className="mb-auto">
+          <h1 className="text-xl sm:text-2xl lg:text-3xl font-semibold leading-tight mb-1 sm:mb-2">
+            See analytics of
+          </h1>
+          <h1 className="text-xl sm:text-2xl lg:text-3xl font-semibold leading-tight mb-1 sm:mb-2">
+            the Customer
+          </h1>
+          <h1 className="text-xl sm:text-2xl lg:text-3xl font-semibold leading-tight mb-3 sm:mb-4">
+            Clearly
+          </h1>
         </div>
 
-        <div className="relative z-10">
-          <h3 className="text-lg sm:text-xl font-bold mb-1">See analytics of</h3>
-          <h3 className="text-lg sm:text-xl font-bold mb-2">the Customer</h3>
-          <p className="text-blue-100 text-sm sm:text-base mb-6 sm:mb-8">Clearly</p>
-
-          <button className="bg-blue-400/30 hover:bg-blue-400/40 backdrop-blur-sm px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm font-medium transition-colors">
+        {/* Button */}
+        <div className="mt-auto">
+          <button className="bg-white/20 hover:bg-white/30 backdrop-blur-sm px-4 sm:px-6 py-2 sm:py-3 rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 border border-white/20">
             See Analytics
           </button>
         </div>
       </div>
+    </div>
 
       {/* Top Menu This Week Card */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6">
         <div className="flex items-start justify-between mb-3 sm:mb-4">
           <div>
-            <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-0.5 sm:mb-1">Top Menu</h3>
-            <p className="text-orange-600 font-semibold text-base sm:text-lg">This Week</p>
+            <h3 className="md:text-3xl sm:text-xl font-bold text-gray-900 mb-0.5 sm:mb-1">Top Menu</h3>
+            <p className="md:text-3xl text-orange-600 font-semibold text-base sm:text-lg">This Week</p>
           </div>
         </div>
 
         <div className="mb-4 sm:mb-6">
-          <p className="text-xs text-gray-500 font-medium">10 - 12 Agustus 2023</p>
+          <p className="md:text-lg sm:text-xs text-gray-500 font-medium">10 - 12 Agustus 2023</p>
         </div>
 
         <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
@@ -69,8 +80,8 @@ export default function AnalyticsSidebar() {
             </div>
             <div className="flex items-start justify-between pr-4 sm:pr-6">
               <div className="flex-1">
-                <p className="text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Nasi Goreng Jamur</p>
-                <p className="text-xs text-gray-500 mt-0.5">Special Resto Pak Min</p>
+                <p className="md:text-xl sm:text-sm font-semibold text-gray-800 leading-tight">Nasi Goreng Jamur</p>
+                <p className="md:text-xl sm:text-sm font-semibold text-gray-800 leading-tight">Special Resto Pak Min</p>
               </div>
             </div>
           </div>
@@ -161,17 +172,6 @@ export default function AnalyticsSidebar() {
               <animate attributeName="r" values="5;7;5" dur="2s" repeatCount="indefinite" />
             </circle>
           </svg>
-
-          {/* Chart labels */}
-          <div className="absolute bottom-2 left-4 right-4 flex justify-between text-xs text-gray-400">
-            <span>Mon</span>
-            <span>Tue</span>
-            <span>Wed</span>
-            <span>Thu</span>
-            <span>Fri</span>
-            <span>Sat</span>
-            <span>Sun</span>
-          </div>
         </div>
       </div>
     </div>
