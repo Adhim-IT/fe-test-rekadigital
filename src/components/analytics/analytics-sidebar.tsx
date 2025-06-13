@@ -6,7 +6,7 @@ import Image from "next/image"
 export default function AnalyticsSidebar() {
   const { customers } = useAppSelector((state) => state.customer)
 
-  // Calculate analytics data
+  // Menghitung data analitik
   const totalCustomers = customers.length
 
   console.log(totalCustomers)
@@ -14,50 +14,51 @@ export default function AnalyticsSidebar() {
   return (
     <div className="space-y-4 sm:space-y-6">
       <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg h-80 sm:h-96 bg-gradient-to-br from-[#6366f1] to-[#8b5cf6] rounded-xl sm:rounded-2xl p-6 sm:p-8 text-white relative overflow-hidden mx-auto">
-      {/* Background decorative curves */}
-      <div className="absolute inset-0">
-        <svg className="absolute bottom-0 right-0 w-full h-full" viewBox="0 0 320 384" fill="none" preserveAspectRatio="xMaxYMax slice">
-          <path
-            d="M200 384C200 320 240 280 280 280C320 280 360 240 360 180"
-            stroke="white"
-            strokeWidth="1.5 sm:2"
+        {/* Kurva dekoratif latar belakang */}
+        <div className="absolute inset-0">
+          <svg
+            className="absolute bottom-0 right-0 w-full h-full"
+            viewBox="0 0 320 384"
             fill="none"
-            opacity="0.3"
-          />
-          <path
-            d="M160 384C160 300 200 220 260 220C320 220 380 160 380 80"
-            stroke="white"
-            strokeWidth="1.5 sm:2"
-            fill="none"
-            opacity="0.2"
-          />
-        </svg>
-      </div>
-
-      <div className="relative z-10 h-full flex flex-col">
-        {/* Main heading */}
-        <div className="mb-auto">
-          <h1 className="text-xl sm:text-2xl lg:text-3xl font-semibold leading-tight mb-1 sm:mb-2">
-            See analytics of
-          </h1>
-          <h1 className="text-xl sm:text-2xl lg:text-3xl font-semibold leading-tight mb-1 sm:mb-2">
-            the Customer
-          </h1>
-          <h1 className="text-xl sm:text-2xl lg:text-3xl font-semibold leading-tight mb-3 sm:mb-4">
-            Clearly
-          </h1>
+            preserveAspectRatio="xMaxYMax slice"
+          >
+            <path
+              d="M200 384C200 320 240 280 280 280C320 280 360 240 360 180"
+              stroke="white"
+              strokeWidth="1.5 sm:2"
+              fill="none"
+              opacity="0.3"
+            />
+            <path
+              d="M160 384C160 300 200 220 260 220C320 220 380 160 380 80"
+              stroke="white"
+              strokeWidth="1.5 sm:2"
+              fill="none"
+              opacity="0.2"
+            />
+          </svg>
         </div>
 
-        {/* Button */}
-        <div className="mt-auto">
-          <button className="bg-white/20 hover:bg-white/30 backdrop-blur-sm px-4 sm:px-6 py-2 sm:py-3 rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 border border-white/20">
-            See Analytics
-          </button>
+        <div className="relative z-10 h-full flex flex-col">
+          {/* Judul utama */}
+          <div className="mb-auto">
+            <h1 className="text-xl sm:text-2xl lg:text-3xl font-semibold leading-tight mb-1 sm:mb-2">
+              See analytics of
+            </h1>
+            <h1 className="text-xl sm:text-2xl lg:text-3xl font-semibold leading-tight mb-1 sm:mb-2">the Customer</h1>
+            <h1 className="text-xl sm:text-2xl lg:text-3xl font-semibold leading-tight mb-3 sm:mb-4">Clearly</h1>
+          </div>
+
+          {/* Tombol */}
+          <div className="mt-auto">
+            <button className="bg-white/20 hover:bg-white/30 backdrop-blur-sm px-4 sm:px-6 py-2 sm:py-3 rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 border border-white/20">
+              See Analytics
+            </button>
+          </div>
         </div>
       </div>
-    </div>
 
-      {/* Top Menu This Week Card */}
+      {/* Kartu Menu Teratas Minggu Ini */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6">
         <div className="flex items-start justify-between mb-3 sm:mb-4">
           <div>
@@ -71,7 +72,7 @@ export default function AnalyticsSidebar() {
         </div>
 
         <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
-          {/* Nasi Goreng Jamur - Special Card */}
+          {/* Kartu Khusus - Nasi Goreng Jamur */}
           <div className="bg-gray-50 rounded-xl p-3 sm:p-4 relative">
             <div className="absolute -top-2 -right-2">
               <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-md flex items-center justify-center text-sm font-bold transform rotate-12">
@@ -107,9 +108,9 @@ export default function AnalyticsSidebar() {
           </div>
         </div>
 
-        {/* Improved Chart Visualization */}
+        {/* Visualisasi Grafik yang Ditingkatkan */}
         <div className="h-32 sm:h-40 relative bg-gradient-to-t from-orange-50 to-white rounded-lg p-3 sm:p-4">
-          {/* Chart area */}
+          {/* Area grafik */}
           <svg className="w-full h-full" viewBox="0 0 280 120" preserveAspectRatio="none">
             <defs>
               <linearGradient id="orangeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -131,7 +132,7 @@ export default function AnalyticsSidebar() {
               </filter>
             </defs>
 
-            {/* Grid lines */}
+            {/* Garis grid */}
             <g stroke="#f3f4f6" strokeWidth="0.5" opacity="0.5">
               <line x1="0" y1="20" x2="280" y2="20" />
               <line x1="0" y1="40" x2="280" y2="40" />
@@ -140,13 +141,13 @@ export default function AnalyticsSidebar() {
               <line x1="0" y1="100" x2="280" y2="100" />
             </g>
 
-            {/* Main area fill */}
+            {/* Isian area utama */}
             <path
               d="M0,100 L20,95 L40,90 L60,85 L80,75 L100,70 L120,65 L140,55 L160,50 L180,45 L200,40 L220,35 L240,30 L260,25 L280,20 L280,120 L0,120 Z"
               fill="url(#orangeGradient)"
             />
 
-            {/* Main line with glow effect */}
+            {/* Garis utama dengan efek cahaya */}
             <path
               d="M0,100 L20,95 L40,90 L60,85 L80,75 L100,70 L120,65 L140,55 L160,50 L180,45 L200,40 L220,35 L240,30 L260,25 L280,20"
               stroke="url(#lineGradient)"
@@ -155,7 +156,7 @@ export default function AnalyticsSidebar() {
               filter="url(#glow)"
             />
 
-            {/* Data points */}
+            {/* Titik data */}
             <g fill="#f97316">
               <circle cx="0" cy="100" r="2" opacity="0.7" />
               <circle cx="40" cy="90" r="2.5" opacity="0.8" />
@@ -167,7 +168,7 @@ export default function AnalyticsSidebar() {
               <circle cx="280" cy="20" r="2.5" opacity="0.8" />
             </g>
 
-            {/* Highlight the peak point */}
+            {/* Sorot titik puncak */}
             <circle cx="160" cy="50" r="5" fill="none" stroke="#f97316" strokeWidth="2" opacity="0.6">
               <animate attributeName="r" values="5;7;5" dur="2s" repeatCount="indefinite" />
             </circle>

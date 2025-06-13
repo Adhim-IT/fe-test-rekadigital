@@ -29,13 +29,13 @@ export default function CustomerBanner({ onAddCustomer, onFilter }: CustomerBann
 
   const handleFilter = () => {
     onFilter?.()
-    // Add filter logic here
+    // Tambahkan logika filter di sini
     console.log("Filter clicked")
   }
 
   return (
     <div className="rounded-xl overflow-hidden relative h-auto min-h-[14rem] md:h-48">
-      {/* Background Image - Full Width */}
+      {/* Gambar Latar Belakang - Lebar Penuh */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-[#5D5FEF]/90 to-[#5D5FEF]/60"></div>
         <div
@@ -54,9 +54,9 @@ export default function CustomerBanner({ onAddCustomer, onFilter }: CustomerBann
         </div>
       </div>
 
-      {/* Content Layer */}
+      {/* Lapisan Konten */}
       <div className="relative z-20 h-full p-3 sm:p-4 md:p-6 flex flex-col justify-between">
-        {/* Header Section */}
+        {/* Bagian Header */}
         <div>
           <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-2 md:mb-3 text-white">Customer</h2>
           <p className="text-white/90 text-xs sm:text-sm max-w-md leading-relaxed line-clamp-2 sm:line-clamp-none">
@@ -64,12 +64,12 @@ export default function CustomerBanner({ onAddCustomer, onFilter }: CustomerBann
           </p>
         </div>
 
-        {/* Controls Section - Desktop: Single Row, Mobile: Responsive */}
+        {/* Bagian Kontrol - Desktop: Baris Tunggal, Mobile: Responsif */}
         <div className="flex flex-col md:flex-row gap-2 md:gap-4 items-start md:items-center mt-3 md:mt-4">
-          {/* Add New Customer Button */}
+          {/* Tombol Tambah Pelanggan Baru */}
           <button
             onClick={onAddCustomer}
-            className="flex items-center space-x-1 sm:space-x-2 bg-transparent text-white px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 rounded-lg font-medium hover:bg-[#5D5FEF] transition-colors shadow-sm text-xs sm:text-sm whitespace-nowrap w-full md:w-auto justify-center md:justify-start"
+            className="flex items-center space-x-1 sm:space-x-2 bg-white/20 text-white px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 rounded-lg font-medium hover:bg-[#5D5FEF] transition-colors shadow-sm text-xs sm:text-sm whitespace-nowrap w-full md:w-auto justify-center md:justify-start"
           >
             <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
@@ -77,13 +77,10 @@ export default function CustomerBanner({ onAddCustomer, onFilter }: CustomerBann
             <span>Add New Customer</span>
           </button>
 
-          {/* Search and Action Buttons Container */}
+          {/* Kontainer Pencarian dan Tombol Aksi */}
           <div className="flex flex-col sm:flex-row w-full md:flex-1 gap-2 md:gap-4 items-start sm:items-center">
-            {/* Search Form */}
-            <form
-              onSubmit={handleSearch}
-              className="w-full md:max-w-md relative shadow-lg rounded-full overflow-hidden"
-            >
+            {/* Form Pencarian */}
+            <form onSubmit={handleSearch} className="w-full md:max-w-md relative shadow-lg rounded-lg overflow-hidden">
               <div className="relative w-full">
                 <svg
                   className="absolute left-2 sm:left-3 md:left-4 top-1/2 transform -translate-y-1/2 w-3 h-3 sm:w-4 sm:h-4 text-gray-400"
@@ -103,18 +100,18 @@ export default function CustomerBanner({ onAddCustomer, onFilter }: CustomerBann
                   value={localSearchTerm}
                   onChange={(e) => setLocalSearchTerm(e.target.value)}
                   placeholder="Search Customer"
-                  className="w-full pl-7 sm:pl-10 md:pl-12 pr-14 sm:pr-20 md:pr-24 py-1.5 sm:py-2 md:py-3 bg-white border-0 rounded-full text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-0 text-xs sm:text-sm"
+                  className="w-full pl-7 sm:pl-10 md:pl-12 pr-14 sm:pr-20 md:pr-24 py-1.5 sm:py-2 md:py-3 bg-white border-0 rounded-lg text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-0 text-xs sm:text-sm"
                 />
                 <button
                   type="submit"
-                  className="absolute right-1 sm:right-1.5 md:right-2 top-1/2 transform -translate-y-1/2 px-2 sm:px-4 md:px-6 py-0.5 sm:py-1 md:py-2 bg-[#5D5FEF] hover:bg-[#4B4DE8] text-white rounded-full transition-colors font-medium text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-white/30"
+                  className="absolute right-1 sm:right-1.5 md:right-2 top-1/2 transform -translate-y-1/2 px-2 sm:px-4 md:px-3 py-0.5 sm:py-1 md:py-2 bg-[#5D5FEF] hover:bg-[#4B4DE8] text-white rounded-lg transition-colors font-medium text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-white/30"
                 >
                   Search
                 </button>
               </div>
             </form>
 
-            {/* Action Buttons */}
+            {/* Tombol Aksi */}
             <div className="flex w-full sm:w-auto justify-between sm:justify-start gap-1 sm:gap-2">
               <button
                 onClick={handleFilter}
@@ -146,7 +143,7 @@ export default function CustomerBanner({ onAddCustomer, onFilter }: CustomerBann
                 <span className="text-xs sm:text-sm font-medium">Refresh</span>
               </button>
 
-              {/* Print Button */}
+              {/* Tombol Cetak */}
               <button className="flex items-center justify-center space-x-1 sm:space-x-2 px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg hover:bg-white/30 transition-colors text-white flex-1 sm:flex-none">
                 <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path

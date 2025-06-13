@@ -82,16 +82,13 @@ export default function FilterModal({ isOpen, onClose }: FilterModalProps) {
 
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl w-full max-w-md max-h-[90vh] overflow-auto">
-        <div className="p-4 sm:p-6 border-b border-gray-100 dark:border-gray-700">
+      <div className="bg-white rounded-xl shadow-xl w-full max-w-md max-h-[90vh] overflow-auto">
+        <div className="p-4 sm:p-6 border-b border-gray-100 bg-gradient-to-r from-[#5D5FEF]/10 to-white rounded-t-xl">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-gray-100">Filter Customers</h2>
-            <button
-              onClick={onClose}
-              className="p-1.5 sm:p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
-            >
+            <h2 className="text-lg sm:text-xl font-semibold text-gray-800">Filter Customers</h2>
+            <button onClick={onClose} className="p-1.5 sm:p-2 hover:bg-gray-100 rounded-lg transition-colors">
               <svg
-                className="w-4 h-4 sm:w-5 sm:h-5 text-gray-500 dark:text-gray-400"
+                className="w-4 h-4 sm:w-5 sm:h-5 text-gray-500"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -105,9 +102,7 @@ export default function FilterModal({ isOpen, onClose }: FilterModalProps) {
         <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
           {/* Customer Level */}
           <div>
-            <h3 className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 sm:mb-3">
-              Customer Level
-            </h3>
+            <h3 className="text-xs sm:text-sm font-medium text-gray-700 mb-2 sm:mb-3">Customer Level</h3>
             <div className="flex flex-wrap gap-2">
               {["Warga", "Juragan", "Sultan", "Konglomerat"].map((level) => (
                 <button
@@ -115,8 +110,8 @@ export default function FilterModal({ isOpen, onClose }: FilterModalProps) {
                   onClick={() => handleLevelChange(level)}
                   className={`px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs sm:text-sm font-medium border transition-colors ${
                     filters.level.includes(level)
-                      ? "bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-700 text-blue-600 dark:text-blue-400"
-                      : "bg-gray-50 dark:bg-gray-700 border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                      ? "bg-[#5D5FEF]/10 border-[#5D5FEF]/30 text-[#5D5FEF]"
+                      : "bg-gray-50 border-gray-200 text-gray-600 hover:bg-gray-100"
                   }`}
                 >
                   {level}
@@ -127,12 +122,10 @@ export default function FilterModal({ isOpen, onClose }: FilterModalProps) {
 
           {/* Transaction Range */}
           <div>
-            <h3 className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 sm:mb-3">
-              Transaction Range (IDR)
-            </h3>
+            <h3 className="text-xs sm:text-sm font-medium text-gray-700 mb-2 sm:mb-3">Transaction Range (IDR)</h3>
             <div className="flex items-center space-x-3">
               <div className="flex-1">
-                <label htmlFor="minTransaction" className="text-xs text-gray-500 dark:text-gray-400 mb-1 block">
+                <label htmlFor="minTransaction" className="text-xs text-gray-500 mb-1 block">
                   Min
                 </label>
                 <input
@@ -142,11 +135,11 @@ export default function FilterModal({ isOpen, onClose }: FilterModalProps) {
                   value={filters.minTransaction}
                   onChange={handleInputChange}
                   placeholder="0"
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors placeholder-gray-400 dark:placeholder-gray-500 text-xs sm:text-sm"
+                  className="w-full px-3 py-2 border border-gray-300 bg-white text-gray-900 rounded-lg focus:ring-2 focus:ring-[#5D5FEF] focus:border-[#5D5FEF] transition-colors placeholder-gray-400 text-xs sm:text-sm"
                 />
               </div>
               <div className="flex-1">
-                <label htmlFor="maxTransaction" className="text-xs text-gray-500 dark:text-gray-400 mb-1 block">
+                <label htmlFor="maxTransaction" className="text-xs text-gray-500 mb-1 block">
                   Max
                 </label>
                 <input
@@ -156,7 +149,7 @@ export default function FilterModal({ isOpen, onClose }: FilterModalProps) {
                   value={filters.maxTransaction}
                   onChange={handleInputChange}
                   placeholder="1,000,000"
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors placeholder-gray-400 dark:placeholder-gray-500 text-xs sm:text-sm"
+                  className="w-full px-3 py-2 border border-gray-300 bg-white text-gray-900 rounded-lg focus:ring-2 focus:ring-[#5D5FEF] focus:border-[#5D5FEF] transition-colors placeholder-gray-400 text-xs sm:text-sm"
                 />
               </div>
             </div>
@@ -164,10 +157,10 @@ export default function FilterModal({ isOpen, onClose }: FilterModalProps) {
 
           {/* Date Range */}
           <div>
-            <h3 className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 sm:mb-3">Date Range</h3>
+            <h3 className="text-xs sm:text-sm font-medium text-gray-700 mb-2 sm:mb-3">Date Range</h3>
             <div className="flex items-center space-x-3">
               <div className="flex-1">
-                <label htmlFor="startDate" className="text-xs text-gray-500 dark:text-gray-400 mb-1 block">
+                <label htmlFor="startDate" className="text-xs text-gray-500 mb-1 block">
                   From
                 </label>
                 <input
@@ -176,11 +169,11 @@ export default function FilterModal({ isOpen, onClose }: FilterModalProps) {
                   name="startDate"
                   value={filters.startDate}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors placeholder-gray-400 dark:placeholder-gray-500 text-xs sm:text-sm"
+                  className="w-full px-3 py-2 border border-gray-300 bg-white text-gray-900 rounded-lg focus:ring-2 focus:ring-[#5D5FEF] focus:border-[#5D5FEF] transition-colors placeholder-gray-400 text-xs sm:text-sm"
                 />
               </div>
               <div className="flex-1">
-                <label htmlFor="endDate" className="text-xs text-gray-500 dark:text-gray-400 mb-1 block">
+                <label htmlFor="endDate" className="text-xs text-gray-500 mb-1 block">
                   To
                 </label>
                 <input
@@ -189,7 +182,7 @@ export default function FilterModal({ isOpen, onClose }: FilterModalProps) {
                   name="endDate"
                   value={filters.endDate}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors placeholder-gray-400 dark:placeholder-gray-500 text-xs sm:text-sm"
+                  className="w-full px-3 py-2 border border-gray-300 bg-white text-gray-900 rounded-lg focus:ring-2 focus:ring-[#5D5FEF] focus:border-[#5D5FEF] transition-colors placeholder-gray-400 text-xs sm:text-sm"
                 />
               </div>
             </div>
@@ -197,9 +190,7 @@ export default function FilterModal({ isOpen, onClose }: FilterModalProps) {
 
           {/* Favorite Menu */}
           <div>
-            <h3 className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 sm:mb-3">
-              Favorite Menu
-            </h3>
+            <h3 className="text-xs sm:text-sm font-medium text-gray-700 mb-2 sm:mb-3">Favorite Menu</h3>
             <input
               type="text"
               id="favoriteMenu"
@@ -207,28 +198,28 @@ export default function FilterModal({ isOpen, onClose }: FilterModalProps) {
               value={filters.favoriteMenu}
               onChange={handleInputChange}
               placeholder="Search by favorite menu"
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors placeholder-gray-400 dark:placeholder-gray-500 text-xs sm:text-sm"
+              className="w-full px-3 py-2 border border-gray-300 bg-white text-gray-900 rounded-lg focus:ring-2 focus:ring-[#5D5FEF] focus:border-[#5D5FEF] transition-colors placeholder-gray-400 text-xs sm:text-sm"
             />
           </div>
         </div>
 
-        <div className="p-4 sm:p-6 border-t border-gray-100 dark:border-gray-700 flex flex-col sm:flex-row sm:justify-between gap-3 sm:gap-0">
+        <div className="p-4 sm:p-6 border-t border-gray-100 flex flex-col sm:flex-row sm:justify-between gap-3 sm:gap-0">
           <button
             onClick={handleClearFilters}
-            className="px-4 py-2 text-xs sm:text-sm text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg transition-colors w-full sm:w-auto"
+            className="px-4 py-2 text-xs sm:text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors w-full sm:w-auto"
           >
             Clear Filters
           </button>
           <div className="flex gap-3 sm:space-x-3">
             <button
               onClick={onClose}
-              className="flex-1 sm:flex-none px-4 py-2 text-xs sm:text-sm text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg transition-colors"
+              className="flex-1 sm:flex-none px-4 py-2 text-xs sm:text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
             >
               Cancel
             </button>
             <button
               onClick={handleApplyFilters}
-              className="flex-1 sm:flex-none px-4 py-2 text-xs sm:text-sm text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 rounded-lg transition-colors"
+              className="flex-1 sm:flex-none px-4 py-2 text-xs sm:text-sm text-white bg-[#5D5FEF] hover:bg-[#4B4DE8] rounded-lg transition-colors"
             >
               Apply Filters
             </button>

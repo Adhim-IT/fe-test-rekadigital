@@ -28,7 +28,7 @@ interface CustomerState {
   filterOptions: FilterOptions | null
 }
 
-// List of favorite menu items to use for generating data
+// Daftar item menu favorit untuk digunakan dalam menghasilkan data
 const favoriteMenus = [
   "Chicken & Ribs Combo",
   "Surf & Turf Gift Basket",
@@ -47,9 +47,9 @@ const favoriteMenus = [
   "Rendang Daging Sapi",
 ]
 
-// Generate 40 customers (10 original + 30 new)
+// Menghasilkan 40 pelanggan (10 asli + 30 baru)
 const generateCustomers = (): Customer[] => {
-  // Original 10 customers
+  // Pelanggan asli sebanyak 10 orang
   const originalCustomers: Customer[] = [
     {
       id: "1",
@@ -133,7 +133,7 @@ const generateCustomers = (): Customer[] => {
     },
   ]
 
-  // Generate 30 additional customers
+  // Menghasilkan 30 pelanggan tambahan
   const levels: Array<"Warga" | "Juragan" | "Sultan" | "Konglomerat"> = ["Warga", "Juragan", "Sultan", "Konglomerat"]
   const firstNames = [
     "John",
@@ -189,7 +189,7 @@ const generateCustomers = (): Customer[] => {
     const favoriteMenu = favoriteMenus[Math.floor(Math.random() * favoriteMenus.length)]
     const totalTransaction = Math.floor(Math.random() * 1000000) + 50000
 
-    // Generate a date between 2023-01-01 and 2023-12-31
+    // Menghasilkan tanggal antara 2023-01-01 dan 2023-12-31
     const month = String(Math.floor(Math.random() * 12) + 1).padStart(2, "0")
     const day = String(Math.floor(Math.random() * 28) + 1).padStart(2, "0")
     const createdAt = `2023-${month}-${day}`

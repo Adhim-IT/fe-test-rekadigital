@@ -48,22 +48,17 @@ export default function AddCustomerModal({ isOpen, onClose, editingCustomer }: A
   }
 
   if (!isOpen) return null
-
-  // Update the add customer modal to be more responsive
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl w-full max-w-md">
-        <div className="p-4 sm:p-6 border-b border-gray-100 dark:border-gray-700">
+      <div className="bg-white rounded-xl shadow-xl w-full max-w-md">
+        <div className="p-4 sm:p-6 border-b border-gray-100 bg-gradient-to-r from-[#5D5FEF]/10 to-white rounded-t-xl">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-gray-100">
+            <h2 className="text-lg sm:text-xl font-semibold text-gray-800">
               {editingCustomer ? "Edit Customer" : "Add New Customer"}
             </h2>
-            <button
-              onClick={onClose}
-              className="p-1.5 sm:p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
-            >
+            <button onClick={onClose} className="p-1.5 sm:p-2 hover:bg-gray-100 rounded-lg transition-colors">
               <svg
-                className="w-4 h-4 sm:w-5 sm:h-5 text-gray-500 dark:text-gray-400"
+                className="w-4 h-4 sm:w-5 sm:h-5 text-gray-500"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -76,10 +71,7 @@ export default function AddCustomerModal({ isOpen, onClose, editingCustomer }: A
 
         <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-4">
           <div>
-            <label
-              htmlFor="name"
-              className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 sm:mb-2"
-            >
+            <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
               Customer Name *
             </label>
             <input
@@ -88,17 +80,14 @@ export default function AddCustomerModal({ isOpen, onClose, editingCustomer }: A
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:border-blue-400 transition-colors bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 text-sm"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5D5FEF] focus:border-[#5D5FEF] transition-colors bg-white text-gray-900 placeholder-gray-500 text-sm"
               placeholder="Enter customer name"
               required
             />
           </div>
 
           <div>
-            <label
-              htmlFor="level"
-              className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 sm:mb-2"
-            >
+            <label htmlFor="level" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
               Level
             </label>
             <select
@@ -106,7 +95,7 @@ export default function AddCustomerModal({ isOpen, onClose, editingCustomer }: A
               name="level"
               value={formData.level}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:border-blue-400 transition-colors bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 text-sm"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5D5FEF] focus:border-[#5D5FEF] transition-colors bg-white text-gray-900 text-sm"
             >
               <option value="Warga">Warga</option>
               <option value="Juragan">Juragan</option>
@@ -116,10 +105,7 @@ export default function AddCustomerModal({ isOpen, onClose, editingCustomer }: A
           </div>
 
           <div>
-            <label
-              htmlFor="favoriteMenu"
-              className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 sm:mb-2"
-            >
+            <label htmlFor="favoriteMenu" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
               Favorite Menu *
             </label>
             <input
@@ -128,7 +114,7 @@ export default function AddCustomerModal({ isOpen, onClose, editingCustomer }: A
               name="favoriteMenu"
               value={formData.favoriteMenu}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:border-blue-400 transition-colors bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 text-sm"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5D5FEF] focus:border-[#5D5FEF] transition-colors bg-white text-gray-900 placeholder-gray-500 text-sm"
               placeholder="Enter favorite menu"
               required
             />
@@ -137,7 +123,7 @@ export default function AddCustomerModal({ isOpen, onClose, editingCustomer }: A
           <div>
             <label
               htmlFor="totalTransaction"
-              className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 sm:mb-2"
+              className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2"
             >
               Total Transaction (IDR)
             </label>
@@ -147,7 +133,7 @@ export default function AddCustomerModal({ isOpen, onClose, editingCustomer }: A
               name="totalTransaction"
               value={formData.totalTransaction}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:border-blue-400 transition-colors bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 text-sm"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5D5FEF] focus:border-[#5D5FEF] transition-colors bg-white text-gray-900 placeholder-gray-500 text-sm"
               placeholder="Enter total transaction"
               min="0"
             />
@@ -157,13 +143,13 @@ export default function AddCustomerModal({ isOpen, onClose, editingCustomer }: A
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 px-3 sm:px-4 py-2 text-xs sm:text-sm text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg transition-colors"
+              className="flex-1 px-3 sm:px-4 py-2 text-xs sm:text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="flex-1 px-3 sm:px-4 py-2 text-xs sm:text-sm text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 rounded-lg transition-colors"
+              className="flex-1 px-3 sm:px-4 py-2 text-xs sm:text-sm text-white bg-[#5D5FEF] hover:bg-[#4B4DE8] rounded-lg transition-colors"
             >
               {editingCustomer ? "Update Customer" : "Add Customer"}
             </button>

@@ -30,7 +30,7 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* Mobile menu button - adjusted position */}
+      {/* Tombol menu mobile */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="lg:hidden fixed top-3 left-3 z-50 p-2 rounded-lg bg-white shadow-md hover:shadow-lg transition-all duration-200 border border-gray-200"
@@ -46,8 +46,7 @@ export default function Sidebar() {
           />
         </div>
       </button>
-
-      {/* Rest of the sidebar code remains the same */}
+      
       {/* Overlay */}
       {isOpen && (
         <div className="lg:hidden fixed inset-0 bg-black/50 z-40 backdrop-blur-sm" onClick={() => setIsOpen(false)} />
@@ -64,7 +63,7 @@ export default function Sidebar() {
         {/* Header */}
         <div className="p-4 sm:p-6 pb-4 border-b border-gray-50">
           <div className="flex items-center">
-            {/* Desktop Logo */}
+            {/* Logo Desktop */}
             <div className="hidden lg:block">
               <Image
                 src="/images/logo/logo.png"
@@ -74,7 +73,7 @@ export default function Sidebar() {
                 className="h-10 w-auto object-contain"
               />
             </div>
-            {/* Mobile Logo */}
+            {/* Logo Mobile */}
             <div className="block lg:hidden relative mx-auto">
               <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
                 <Image
@@ -89,7 +88,7 @@ export default function Sidebar() {
           </div>
         </div>
 
-        {/* Main Navigation */}
+        {/* Navigasi Utama */}
         <div className="px-4 flex-1 overflow-y-auto py-4">
           <div className="mb-8">
             <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4 px-3">Menu</p>
@@ -148,7 +147,7 @@ export default function Sidebar() {
             </nav>
           </div>
 
-          {/* Integration Section */}
+          {/* Bagian Integrasi */}
           <div className="mb-6">
             <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4 px-3">Integration</p>
             <nav className="space-y-1">
@@ -177,7 +176,7 @@ export default function Sidebar() {
           </div>
         </div>
 
-        {/* User Profile Section */}
+        {/* Bagian Profil Pengguna */}
         <div className="p-4 border-t border-gray-100 bg-gray-50/50">
           <div className="flex items-center space-x-3 mb-4 p-3 bg-white rounded-xl shadow-sm">
             <div className="w-10 h-10 bg-gradient-to-br from-gray-200 to-gray-300 rounded-full flex items-center justify-center overflow-hidden border-2 border-white shadow-sm">

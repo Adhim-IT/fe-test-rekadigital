@@ -6,9 +6,10 @@ import Image from "next/image"
 
 interface CustomerTableProps {
   onEditCustomer?: (customer: Customer) => void
+  onViewCustomerDetail?: (customer: Customer) => void
 }
 
-export default function CustomerTable({ onEditCustomer }: CustomerTableProps) {
+export default function CustomerTable({ onEditCustomer, onViewCustomerDetail }: CustomerTableProps) {
   const dispatch = useAppDispatch()
   const { customers, searchTerm, sortBy, sortOrder, currentPage, itemsPerPage, filterOptions } = useAppSelector(
     (state) => state.customer,
@@ -33,27 +34,27 @@ export default function CustomerTable({ onEditCustomer }: CustomerTableProps) {
     return `IDR ${amount.toLocaleString("id-ID")}`
   }
 
-  // Filter customers based on search term and filter options
+  // Filter pelanggan berdasarkan kata pencarian dan opsi filter
   const filteredCustomers = customers.filter((customer) => {
-    // Search term filter
+    // Kata pencarian filter
     const matchesSearch = customer.name.toLowerCase().includes(searchTerm.toLowerCase())
     if (!matchesSearch) return false
 
-    // Apply additional filters if they exist
+    // Terapkan filter tambahan jika ada
     if (filterOptions) {
-      // Filter by level
+      // Filter berdasarkan level
       if (filterOptions.level.length > 0 && !filterOptions.level.includes(customer.level)) {
         return false
       }
 
-      // Filter by transaction amount
+      // Filter berdasarkan jumlah transaksi
       const minTransaction = Number(filterOptions.minTransaction) || 0
       const maxTransaction = Number(filterOptions.maxTransaction) || Number.POSITIVE_INFINITY
       if (customer.totalTransaction < minTransaction || customer.totalTransaction > maxTransaction) {
         return false
       }
 
-      // Filter by date range
+      // Filter berdasarkan rentang tanggal
       if (filterOptions.startDate && new Date(customer.createdAt) < new Date(filterOptions.startDate)) {
         return false
       }
@@ -61,7 +62,7 @@ export default function CustomerTable({ onEditCustomer }: CustomerTableProps) {
         return false
       }
 
-      // Filter by favorite menu
+      // Filter berdasarkan menu favorit
       if (
         filterOptions.favoriteMenu &&
         !customer.favoriteMenu.toLowerCase().includes(filterOptions.favoriteMenu.toLowerCase())
@@ -73,7 +74,7 @@ export default function CustomerTable({ onEditCustomer }: CustomerTableProps) {
     return true
   })
 
-  // Sort customers
+  // Urutkan pelanggan
   const sortedCustomers = [...filteredCustomers].sort((a, b) => {
     if (!sortBy) return 0
 
@@ -90,7 +91,7 @@ export default function CustomerTable({ onEditCustomer }: CustomerTableProps) {
     return 0
   })
 
-  // Paginate customers
+  // Paginasi pelanggan
   const startIndex = (currentPage - 1) * itemsPerPage
   const paginatedCustomers = sortedCustomers.slice(startIndex, startIndex + itemsPerPage)
   const totalPages = Math.ceil(sortedCustomers.length / itemsPerPage)
@@ -117,7 +118,7 @@ export default function CustomerTable({ onEditCustomer }: CustomerTableProps) {
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
-            strokeWidth={2}
+            strokeWidth={1.5}
             d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"
           />
         </svg>
@@ -125,20 +126,18 @@ export default function CustomerTable({ onEditCustomer }: CustomerTableProps) {
     }
 
     return sortOrder === "asc" ? (
-      <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+      <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 15l7-7 7 7" />
       </svg>
     ) : (
-      <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+      <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
       </svg>
     )
   }
-
-  // Update the customer table to be more responsive
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-      {/* Active Filters */}
+    <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+      {/* Filter Aktif */}
       {filterOptions && (
         <div className="px-3 sm:px-6 py-3 bg-blue-50 border-b border-blue-100 flex flex-col sm:flex-row sm:items-center justify-between">
           <div className="flex flex-col sm:flex-row sm:items-center">
@@ -175,49 +174,49 @@ export default function CustomerTable({ onEditCustomer }: CustomerTableProps) {
         </div>
       )}
 
-      {/* Table */}
+      {/* Tabel */}
       <div className="overflow-x-auto">
-        <table className="w-full">
-          <thead className="bg-gray-50 border-b border-gray-100">
+        <table className="w-full border-collapse">
+          <thead className="bg-gray-50">
             <tr>
-              <th className="px-3 sm:px-6 py-3 sm:py-4 text-left">
+              <th className="px-6 py-3 text-left">
                 <button
                   onClick={() => handleSort("name")}
-                  className="flex items-center space-x-1 sm:space-x-2 text-xs sm:text-sm font-medium text-gray-600 hover:text-gray-800 transition-colors"
+                  className="flex items-center space-x-2 text-sm font-medium text-gray-500 hover:text-gray-700 transition-colors"
                 >
                   <span>Customer Name</span>
                   <SortIcon column="name" />
                 </button>
               </th>
-              <th className="px-3 sm:px-6 py-3 sm:py-4 text-left">
+              <th className="px-6 py-3 text-left">
                 <button
                   onClick={() => handleSort("level")}
-                  className="flex items-center space-x-1 sm:space-x-2 text-xs sm:text-sm font-medium text-gray-600 hover:text-gray-800 transition-colors"
+                  className="flex items-center space-x-2 text-sm font-medium text-gray-500 hover:text-gray-700 transition-colors"
                 >
                   <span>Level</span>
                   <SortIcon column="level" />
                 </button>
               </th>
-              <th className="hidden md:table-cell px-3 sm:px-6 py-3 sm:py-4 text-left">
+              <th className="hidden md:table-cell px-6 py-3 text-left">
                 <button
                   onClick={() => handleSort("favoriteMenu")}
-                  className="flex items-center space-x-1 sm:space-x-2 text-xs sm:text-sm font-medium text-gray-600 hover:text-gray-800 transition-colors"
+                  className="flex items-center space-x-2 text-sm font-medium text-gray-500 hover:text-gray-700 transition-colors"
                 >
                   <span>Favorite Menu</span>
                   <SortIcon column="favoriteMenu" />
                 </button>
               </th>
-              <th className="hidden sm:table-cell px-3 sm:px-6 py-3 sm:py-4 text-left">
+              <th className="hidden sm:table-cell px-6 py-3 text-left">
                 <button
                   onClick={() => handleSort("totalTransaction")}
-                  className="flex items-center space-x-1 sm:space-x-2 text-xs sm:text-sm font-medium text-gray-600 hover:text-gray-800 transition-colors"
+                  className="flex items-center space-x-2 text-sm font-medium text-gray-500 hover:text-gray-700 transition-colors"
                 >
                   <span>Total Transaction</span>
                   <SortIcon column="totalTransaction" />
                 </button>
               </th>
-              <th className="px-3 sm:px-6 py-3 sm:py-4 text-left">
-                <span className="text-xs sm:text-sm font-medium text-gray-600">Action</span>
+              <th className="px-6 py-3 text-left">
+                <span className="text-sm font-medium text-gray-500">Action</span>
               </th>
             </tr>
           </thead>
@@ -247,13 +246,16 @@ export default function CustomerTable({ onEditCustomer }: CustomerTableProps) {
                   </td>
                   <td className="px-3 sm:px-6 py-3 sm:py-4">
                     <div className="flex items-center space-x-1 sm:space-x-2">
-                      <button className="p-1.5 sm:p-2 text-black hover:bg-blue-50 rounded-lg transition-colors flex items-center bg-gray-50 border border-gray-100">
+                      <button
+                        onClick={() => onViewCustomerDetail?.(customer)}
+                        className="p-1.5 sm:p-2 text-black hover:bg-blue-50 rounded-lg transition-colors flex items-center bg-gray-50 border border-gray-100"
+                      >
                         <Image src="/images/icons/detail.png" alt="eye" width={15} height={15} />
                         <p className="ml-1 text-xs sm:text-sm">Detail</p>
                       </button>
                       <button
                         onClick={() => onEditCustomer?.(customer)}
-                        className="p-1.5 sm:p-2hover:bg-green-50 text-black rounded-lg transition-colors flex items-center bg-gray-50 border border-gray-100 pr-2 pt-2 pb-2 pl-2 "
+                        className="p-1.5 sm:p-2 hover:bg-green-50 text-black rounded-lg transition-colors flex items-center bg-gray-50 border border-gray-100 pr-2 pt-2 pb-2 pl-2 "
                       >
                         <Image src="/images/icons/edit.png" alt="edit" width={15} height={15} />
                       </button>
@@ -278,7 +280,7 @@ export default function CustomerTable({ onEditCustomer }: CustomerTableProps) {
         </table>
       </div>
 
-      {/* Pagination - Make it more responsive */}
+      {/* Paginasi - Buat lebih responsif */}
       <div className="px-3 sm:px-6 py-4 sm:py-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-3">
         <div className="text-xs sm:text-sm text-gray-500 font-medium text-center sm:text-left">
           Showing {filteredCustomers.length > 0 ? startIndex + 1 : 0} to{" "}
@@ -286,7 +288,7 @@ export default function CustomerTable({ onEditCustomer }: CustomerTableProps) {
         </div>
 
         <div className="flex items-center space-x-1">
-          {/* Previous Button */}
+          {/* Tombol Sebelumnya */}
           <button
             onClick={() => handlePageChange(Math.max(currentPage - 1, 1))}
             disabled={currentPage === 1}
@@ -298,9 +300,9 @@ export default function CustomerTable({ onEditCustomer }: CustomerTableProps) {
             </svg>
           </button>
 
-          {/* Page Numbers - Simplified for mobile */}
+          {/* Nomor Halaman - Disederhanakan untuk mobile */}
           <div className="flex items-center space-x-1">
-            {/* Show first page */}
+            {/* Tampilkan halaman pertama */}
             <button
               onClick={() => handlePageChange(1)}
               className={`flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 text-xs sm:text-sm font-medium rounded-lg border transition-all duration-200 ${
@@ -312,14 +314,14 @@ export default function CustomerTable({ onEditCustomer }: CustomerTableProps) {
               1
             </button>
 
-            {/* Ellipsis for many pages */}
+            {/* Elipsis untuk banyak halaman */}
             {currentPage > 3 && (
               <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10">
                 <span className="text-gray-400 font-medium">...</span>
               </div>
             )}
 
-            {/* Current page neighborhood */}
+            {/* Tetangga halaman saat ini */}
             {currentPage > 2 && (
               <button
                 onClick={() => handlePageChange(currentPage - 1)}
@@ -329,7 +331,7 @@ export default function CustomerTable({ onEditCustomer }: CustomerTableProps) {
               </button>
             )}
 
-            {/* Current page (if not 1) */}
+            {/* Halaman saat ini (jika bukan 1) */}
             {currentPage !== 1 && currentPage !== totalPages && (
               <button
                 onClick={() => handlePageChange(currentPage)}
@@ -339,7 +341,7 @@ export default function CustomerTable({ onEditCustomer }: CustomerTableProps) {
               </button>
             )}
 
-            {/* Next page */}
+            {/* Halaman berikutnya */}
             {currentPage < totalPages - 1 && (
               <button
                 onClick={() => handlePageChange(currentPage + 1)}
@@ -349,14 +351,14 @@ export default function CustomerTable({ onEditCustomer }: CustomerTableProps) {
               </button>
             )}
 
-            {/* Ellipsis for many pages */}
+            {/* Elipsis untuk banyak halaman */}
             {currentPage < totalPages - 2 && (
               <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10">
                 <span className="text-gray-400 font-medium">...</span>
               </div>
             )}
 
-            {/* Last page (if not 1) */}
+            {/* Halaman terakhir (jika bukan 1) */}
             {totalPages > 1 && (
               <button
                 onClick={() => handlePageChange(totalPages)}
@@ -371,7 +373,7 @@ export default function CustomerTable({ onEditCustomer }: CustomerTableProps) {
             )}
           </div>
 
-          {/* Next Button */}
+          {/* Tombol Berikutnya */}
           <button
             onClick={() => handlePageChange(Math.min(currentPage + 1, totalPages))}
             disabled={currentPage === totalPages || totalPages === 0}

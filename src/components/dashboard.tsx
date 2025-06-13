@@ -7,13 +7,16 @@ import CustomerBanner from "./customer/customer-banner"
 import CustomerTable from "./customer/customer-table"
 import AddCustomerModal from "./customer/add-customer-modal"
 import FilterModal from "./customer/filter-modal"
+import CustomerDetailModal from "./customer/customer-detail-modal"
 import AnalyticsSidebar from "./analytics/analytics-sidebar"
 import type { Customer } from "@/store/slices/customerSlice"
 
 export default function Dashboard() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false)
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false)
+  const [isDetailModalOpen, setIsDetailModalOpen] = useState(false)
   const [editingCustomer, setEditingCustomer] = useState<Customer | null>(null)
+  const [selectedCustomer, setSelectedCustomer] = useState<Customer | null>(null)
 
   const handleAddCustomer = () => {
     setEditingCustomer(null)
@@ -25,9 +28,19 @@ export default function Dashboard() {
     setIsAddModalOpen(true)
   }
 
+  const handleViewCustomerDetail = (customer: Customer) => {
+    setSelectedCustomer(customer)
+    setIsDetailModalOpen(true)
+  }
+
   const handleCloseModal = () => {
     setIsAddModalOpen(false)
     setEditingCustomer(null)
+  }
+
+  const handleCloseDetailModal = () => {
+    setIsDetailModalOpen(false)
+    setSelectedCustomer(null)
   }
 
   const handleOpenFilterModal = () => {
@@ -70,7 +83,7 @@ export default function Dashboard() {
                 </div>
 
                 {/* Customer Table */}
-                <CustomerTable onEditCustomer={handleEditCustomer} />
+                <CustomerTable onEditCustomer={handleEditCustomer} onViewCustomerDetail={handleViewCustomerDetail} />
               </div>
 
               {/* Right Column - Analytics Sidebar */}
@@ -87,6 +100,9 @@ export default function Dashboard() {
 
       {/* Filter Modal */}
       <FilterModal isOpen={isFilterModalOpen} onClose={handleCloseFilterModal} />
+
+      {/* Customer Detail Modal */}
+      <CustomerDetailModal isOpen={isDetailModalOpen} onClose={handleCloseDetailModal} customer={selectedCustomer} />
     </div>
   )
 }
